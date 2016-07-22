@@ -1,1 +1,9 @@
 <h1>Welcome to MadWorld!</h1>
+
+<%= form_for @listing_new do |f| %>
+	<%= render partial: 'listings/form', object: f %>
+	<div class="submit-field">
+      <%= f.submit %>
+    </div>
+<% end %>
+<%= render template: 'listings/index' %>

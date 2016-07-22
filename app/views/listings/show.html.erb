@@ -1,0 +1,12 @@
+<h1><%= @listing.name %></h1>
+<p><%= @listing.description %></p>
+
+<ul>
+	<li>Number of guest: <%=@listing.number_of_guest%></li>
+	<li>Price: <%=@listing.price%></li>
+</ul>
+
+<% if @listing.user_id == current_user.id %>
+	<span><%= link_to 'Edit', edit_listing_path %></span>
+	<span><%= link_to 'Delete', method: :delete, data: {confirm: 'Are you sure about this?'} %></span>
+<% end %>

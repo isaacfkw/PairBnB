@@ -1,0 +1,19 @@
+<h3>Listing</h3>
+
+<table>
+	<tr>
+		<th>Property Name</th>
+		<th>About the Property</th>
+		<th>Number of Guests</th>
+		<th>Price</th>
+	</tr>
+	<% @listing.each do |x| %>
+	<tr>
+		<td><%= x.name %></td>
+		<td><%= x.description %></td>
+		<td><%= x.number_of_guest %></td>
+		<td><%= x.price %></td>
+	</tr>
+	<% end %>
+
+</table>
