@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721082015) do
+ActiveRecord::Schema.define(version: 20160726090822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20160721082015) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "listing_tags", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -33,6 +40,29 @@ ActiveRecord::Schema.define(version: 20160721082015) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.json     "images"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "listing_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "property_type"
+    t.boolean  "kitchen"
+    t.boolean  "air_cond"
+    t.boolean  "wifi"
+    t.boolean  "non_smoking"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,4 +77,6 @@ ActiveRecord::Schema.define(version: 20160721082015) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "reservations", "listings"
+  add_foreign_key "reservations", "users"
 end

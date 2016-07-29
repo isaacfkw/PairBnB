@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@listing = Listing.all
+		@listing = Listing.page(params[:page]).per_page(5)
 		@listing_new = Listing.new
 	end
 	private

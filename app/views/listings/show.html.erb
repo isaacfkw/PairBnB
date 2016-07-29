@@ -1,12 +1,59 @@
+
 <h1><%= @listing.name %></h1>
 <p><%= @listing.description %></p>
+
+<td>
+	<% if @listing.images[0] != nil %>
+	<%=image_tag (@listing.images[0].square.url)%>
+	<%else%>
+	<span>no image</span>
+	<%end%>
+</td>
 
 <ul>
 	<li>Number of guest: <%=@listing.number_of_guest%></li>
 	<li>Price: <%=@listing.price%></li>
 </ul>
 
+
 <% if @listing.user_id == current_user.id %>
 	<span><%= link_to 'Edit', edit_listing_path %></span>
-	<span><%= link_to 'Delete', method: :delete, data: {confirm: 'Are you sure about this?'} %></span>
+	<span><%= link_to 'Delete', listing_path, method: :delete, data: {confirm: 'Are you sure about this?'} %></span>
 <% end %>
+
+
+<form class="new_reservation" id="new_reservation" action="/reservations" accept-charset="UTF-8" method="post">
+	
+	<input name="utf8" value="✓" type="hidden"></input>
+	<input name="authenticity_token" value="N6ky0+4nFWyFoXTxrHLWfwyC2580IlWQEKRFq3PmbYI5Q86fg+/UKrLPFRhDGk9yxuGifZM5gFCL8zxrJ1VS6g==" type="hidden"></input>
+
+	<!-- form start here -->
+<div class="container">
+	<div class="date-picker">
+		<div class="input">
+		<div class="result">Check-in Date: <span></span>
+		<input name="reservation[start_date]" id="reservation_start_date" type="text">
+		</div>
+		</div>
+		<div class="calendar"></div>
+	</div>
+
+	<div class="date-picker">
+		<div class="input">
+		<div class="result">Check-out Date: <span></span>
+		<input name="reservation[end_date]" id="reservation_end_date" type="text">
+		</div>
+		</div>
+		<div class="calendar"></div>
+	</div>
+</div>
+	<!-- hidden parts -->
+	<input name="reservation[id]" id="reservation_id" type="hidden"></input>
+	<input value="<%= current_user.id %>" name="reservation[user_id]" id="reservation_user_id" type="hidden"></input>
+	<input value="<%= @listing.id %>" name="reservation[listing_id]" id="reservation_listing_id" type="hidden"></input>
+
+	<!-- submit -->
+	<input name="commit" value="Create Reservation" type="submit"></input>
+</form>
+		
+

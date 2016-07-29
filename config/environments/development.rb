@@ -38,5 +38,23 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  #to be used in mail html files, to define a link in the mail.(We cant define path in the mail, need this to work with the code inside mail html file to generate the link that go to that path)
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :domain               => "gmail.com",
+   :user_name            => ENV['gmail_username'],
+   :password             => ENV['gmail_password'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
+
+
 end

@@ -5,7 +5,23 @@ gem 'clearance'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+#to prevent upload of private key
 gem 'figaro'
+
+#bootstrap
+# gem 'bootstrap-sass', '~> 3.3.5'
+# gem 'autoprefixer-rails'
+# gem 'bootstrap-select-rails'
+
+#pagination
+gem 'will_paginate', '~> 3.1.0'
+
+#image uploading
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+
+#background job
+gem 'sidekiq'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

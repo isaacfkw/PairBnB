@@ -1,19 +1,24 @@
 <div class="text-field">
   <%= form.label :name %>
-  <%= form.text_field :name, type: 'text' %>
+  <%= form.text_field :name, type: 'text', :required => true %>
 </div>
 
 <div class="text-field">
   <%= form.label :description %>
-  <%= form.text_field :description, type: 'text' %>
+  <%= form.text_field :description, type: 'text', :required => true %>
 </div>
 
 <div class="num-field">
   <%= form.label :number_of_guest %>
-  <%= form.text_field :number_of_guest, type: 'number' %>
+  <%= form.text_field :number_of_guest, type: 'number', :required => true %>
 </div>
 
 <div class="num-field">
   <%= form.label :price %>
-  <%= form.text_field :price, type: 'number' %>
+  <%= form.text_field :price, type: 'number', :required => true %>
+</div>
+
+<div class="img-field">
+	<%= form.label :property_image %>
+	<%= form.file_field :images, multiple: true %><br>
 </div>

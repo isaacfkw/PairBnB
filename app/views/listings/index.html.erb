@@ -9,11 +9,23 @@
 	</tr>
 	<% @listing.each do |x| %>
 	<tr>
-		<td><%= x.name %></td>
+		<td><a href="/listings/<%= x.id %>"><%= x.name %></a></td>
 		<td><%= x.description %></td>
 		<td><%= x.number_of_guest %></td>
 		<td><%= x.price %></td>
+		
+		<td>
+		<% if x.images[0] != nil %>
+		<%=image_tag (x.images[0].square.url)%>
+		<%else%>
+		<span>no image</span>
+		</td>
+
+		<%end%>
+
 	</tr>
 	<% end %>
 
 </table>
+
+<%= will_paginate @listing %>

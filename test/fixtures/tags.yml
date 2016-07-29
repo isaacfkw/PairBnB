@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property_type: MyString
+  kitchen: false
+  air_cond: false
+  wifi: false
+  non_smoking: false
+
+two:
+  property_type: MyString
+  kitchen: false
+  air_cond: false
+  wifi: false
+  non_smoking: false

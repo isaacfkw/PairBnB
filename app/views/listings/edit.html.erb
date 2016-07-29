@@ -1,7 +1,14 @@
 <br>
 <%= form_for @listing do |f| %>
+
 	<%= render partial: 'listings/form', object: f %>
+
+	<%= f.fields_for :tags do |x| %>
+		<%= x.label :property_type %>
+		<%= x.select :property_type, ['Villa', 'Apartment', 'Room'], :include_blank => true %>
+	<% end %>
+
 	<div class="submit-field">
-      <%= f.submit %>
+      <%= f.submit "Update Details"%>
     </div>
 <% end %>
