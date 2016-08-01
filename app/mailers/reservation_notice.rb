@@ -1,4 +1,5 @@
 class ReservationNotice < ApplicationMailer
+	
 
 	def confirmation_email(user)
 		@user = user

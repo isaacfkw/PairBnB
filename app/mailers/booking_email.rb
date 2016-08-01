@@ -1,4 +1,5 @@
 class BookingEmail < ApplicationMailer
+	
 	def booking_notice_email(user,listing,guest)
 		@user = user
 		@listing = listing

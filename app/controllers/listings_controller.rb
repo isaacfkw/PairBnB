@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
 before_action :this_listing, only: [:edit, :show, :update, :destroy]
-before_action :require_login, only: [:edit, :new, :update, :destroy]
+before_action :require_login, only: [:edit, :new, :update, :destroy, :show]
 
 	def index
 		byebug

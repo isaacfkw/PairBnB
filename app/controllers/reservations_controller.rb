@@ -9,12 +9,12 @@ def create
 	# byebug
 	if (@reservation.reserved_dates & @listing.taken_dates).empty?
 		@reservation.save
-		ReservationNotice.confirmation_email(@user).deliver!
-		BookingEmail.booking_notice_email(@host, @listing, @user).deliver!
-		flash[:success] = 'Booking confirmed fxxker!'
+		ReservationNotice.delay.confirmation_email(@user)
+		BookingEmail.delay.booking_notice_email(@host, @listing, @user)
+		flash[:success] = 'Booking confirmed!'
 		redirect_to listing_path(@listing)
 	else
-		flash[:error] = 'WTF you did? Booking failed!'
+		flash[:error] = 'Booking failed!'
 		redirect_to listing_path(@listing)
 	end
 
