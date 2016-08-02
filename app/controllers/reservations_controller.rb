@@ -12,7 +12,7 @@ def create
 		ReservationNotice.delay.confirmation_email(@user)
 		BookingEmail.delay.booking_notice_email(@host, @listing, @user)
 		flash[:success] = 'Booking confirmed!'
-		redirect_to listing_path(@listing)
+		redirect_to new_payment_path
 	else
 		flash[:error] = 'Booking failed!'
 		redirect_to listing_path(@listing)

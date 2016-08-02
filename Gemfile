@@ -8,11 +8,6 @@ gem 'omniauth-facebook'
 #to prevent upload of private key
 gem 'figaro'
 
-#bootstrap
-# gem 'bootstrap-sass', '~> 3.3.5'
-# gem 'autoprefixer-rails'
-# gem 'bootstrap-select-rails'
-
 #pagination
 gem 'will_paginate', '~> 3.1.0'
 
@@ -22,6 +17,12 @@ gem 'mini_magick'
 
 #background job
 gem 'sidekiq'
+
+# payment method
+gem 'braintree', '~> 2.33.1'
+
+# If you need to send some data to your js files and you don't want to do this with long way through views and parsing - use this force!
+gem 'gon', '~> 5.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
